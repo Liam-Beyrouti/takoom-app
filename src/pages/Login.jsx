@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../supabaseClient'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { Check } from 'lucide-react'
+import { Check, Menu, X } from 'lucide-react'
 
 const Login = () => {
     const [loading, setLoading] = useState(false)
@@ -9,6 +9,7 @@ const Login = () => {
     const [password, setPassword] = useState('')
     const [rememberMe, setRememberMe] = useState(false)
     const [error, setError] = useState(null)
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -40,10 +41,55 @@ const Login = () => {
         }
     }
 
-    return (
-        <div className="min-h-screen bg-cream flex items-center justify-center p-4 font-sans text-coffee">
+    // Placeholder function for external navigation
+    const navigateToSite = (page) => {
+        // In production, this should point to the actual website URL
+        // For now, we'll try to redirect relative to the current origin if they serve static files, 
+        // or just console log if we are in simplified mode.
+        // Assuming the user might manually fix the links later or we use absolute paths if known.
+        // Given the user just updated static site links, we can try to assume a structure or just use # for demo in React.
+        // The user's request is "add navbar", implying visual completeness.
+        window.location.href = `/${page}`
+    }
 
-            <div className="bg-white p-8 md:p-12 rounded-[2rem] shadow-xl w-full max-w-[500px] border border-coffee/5">
+    return (
+        <div className="min-h-screen bg-cream font-sans text-coffee flex flex-col items-center justify-center p-4 relative">
+
+            {/* Navigation Bar */}
+            <nav className="fixed w-full z-50 top-6 px-4">
+                <div className="max-w-4xl mx-auto flex justify-between items-center text-sm font-medium">
+                    <a href="/" className="text-xl font-display tracking-tight uppercase hover:opacity-80 transition no-underline text-coffee">
+                        TAKOOM
+                    </a>
+
+                    {/* Desktop Menu */}
+                    <div className="hidden md:flex bg-coffee/5 backdrop-blur-sm rounded-full p-1 border border-coffee/10 shadow-sm">
+                        <a href="/about.html" className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">À Propos</a>
+                        <a href="/features.html" className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">Fonctionnalités</a>
+                        <a href="/sectors.html" className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">Secteurs</a>
+                        <a href="/pricing.html" className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">Offres</a>
+                    </div>
+
+                    <div className="flex items-center gap-4">
+                        <a href="/login" className="hidden md:block font-bold text-coffee no-underline opacity-60 pointer-events-none">Connexion</a>
+                        <a href="/onboarding.html"
+                            className="bg-coffee text-cream px-6 py-3 rounded-full font-bold hover:scale-105 transition hidden md:block no-underline shadow-lg shadow-coffee/20">
+                            Me lancer
+                        </a>
+
+                        {/* Burger Button */}
+                        <button
+                            onClick={() => setMobileMenuOpen(true)}
+                            className="md:hidden text-coffee p-2"
+                        >
+                            <Menu className="w-8 h-8" />
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            {/* Main Content Card */}
+            <div className="bg-white p-8 md:p-12 rounded-[2rem] shadow-xl w-full max-w-[500px] border border-coffee/5 mt-20">
 
                 <div className="mb-0">
                     <h1 className="text-4xl font-black font-display text-coffee uppercase mb-2 tracking-tight">CONNEXION</h1>
@@ -127,6 +173,33 @@ const Login = () => {
                     </button>
                 </form>
             </div>
+
+            {/* Mobile Menu Overlay */}
+            <div
+                className={`fixed inset-0 z-50 bg-coffee flex flex-col justify-center items-center transition-transform duration-300 ease-in-out ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+            >
+                <button
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="absolute top-6 right-6 text-cream p-2 hover:bg-white/10 rounded-full transition"
+                >
+                    <X className="w-8 h-8" />
+                </button>
+
+                <nav className="flex flex-col items-center gap-8">
+                    <a href="/" className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">Accueil</a>
+                    <a href="/about.html" className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">À Propos</a>
+                    <a href="/features.html" className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">Fonctionnalités</a>
+                    <a href="/sectors.html" className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">Secteurs</a>
+                    <a href="/pricing.html" className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">Offres</a>
+                    <span className="text-cream font-display text-2xl uppercase tracking-tighter opacity-50">Connexion</span>
+
+                    <a href="/onboarding.html"
+                        className="mt-4 bg-cream text-coffee px-8 py-3 rounded-full font-bold text-lg uppercase tracking-widest hover:scale-105 transition shadow-xl no-underline">
+                        Me lancer
+                    </a>
+                </nav>
+            </div>
+
         </div>
     )
 }
