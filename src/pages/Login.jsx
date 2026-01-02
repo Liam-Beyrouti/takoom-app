@@ -59,31 +59,41 @@ const Login = () => {
             {/* Navigation Bar */}
             <nav className="fixed w-full z-50 top-6 px-4">
                 <div className="max-w-4xl mx-auto flex justify-between items-center text-sm font-medium">
-                    <a href={`${WEBSITE_URL}/`} className="text-xl font-display tracking-tight uppercase hover:opacity-80 transition no-underline text-coffee">
+                    <a href={`${WEBSITE_URL}/`} className="text-xl font-display tracking-tight uppercase hover:opacity-80 transition">
                         TAKOOM
                     </a>
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex bg-coffee/5 backdrop-blur-sm rounded-full p-1 border border-coffee/10 shadow-sm">
-                        <a href={`${WEBSITE_URL}/about.html`} className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">À Propos</a>
-                        <a href={`${WEBSITE_URL}/features.html`} className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">Fonctionnalités</a>
-                        <a href={`${WEBSITE_URL}/sectors.html`} className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">Secteurs</a>
-                        <a href={`${WEBSITE_URL}/pricing.html`} className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">Offres</a>
+                    <div id="desktop-menu"
+                        className="hidden md:flex bg-coffee/5 backdrop-blur-sm rounded-full p-1 border border-coffee/10 shadow-sm">
+                        <a href={`${WEBSITE_URL}/about.html`} className="px-6 py-2 rounded-full hover:bg-coffee/10 transition">À Propos</a>
+                        <a href={`${WEBSITE_URL}/features.html`} className="px-6 py-2 rounded-full hover:bg-coffee/10 transition">Fonctionnalités</a>
+                        <a href={`${WEBSITE_URL}/sectors.html`} className="px-6 py-2 rounded-full hover:bg-coffee/10 transition">Secteurs</a>
+                        <a href={`${WEBSITE_URL}/pricing.html`} className="px-6 py-2 rounded-full hover:bg-coffee/10 transition">Offres</a>
                     </div>
 
                     <div className="flex items-center gap-4">
-                        <a href="/login" className="hidden md:block font-bold text-coffee no-underline opacity-60 pointer-events-none">Connexion</a>
+                        <span className="text-coffee font-bold text-sm hover:opacity-70 transition hidden md:block opacity-50 cursor-default">
+                            Connexion
+                        </span>
+
                         <a href={`${WEBSITE_URL}/onboarding.html`}
-                            className="bg-coffee text-cream px-6 py-3 rounded-full font-bold hover:scale-105 transition hidden md:block no-underline shadow-lg shadow-coffee/20">
+                            className="bg-coffee text-cream px-6 py-3 rounded-full font-bold hover:scale-105 transition transform shadow-lg shadow-coffee/20 hidden md:block">
                             Me lancer
                         </a>
 
                         {/* Burger Button */}
                         <button
                             onClick={() => setMobileMenuOpen(true)}
+                            id="burger-btn"
                             className="md:hidden text-coffee p-2"
                         >
-                            <Menu className="w-8 h-8" />
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+                                strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <line x1="3" y1="18" x2="21" y2="18"></line>
+                            </svg>
                         </button>
                     </div>
                 </div>
