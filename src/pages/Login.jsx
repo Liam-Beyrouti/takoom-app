@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { Check, Menu, X } from 'lucide-react'
 
 const Login = () => {
+    const WEBSITE_URL = 'https://takoom-website.vercel.app'
     const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -58,21 +59,21 @@ const Login = () => {
             {/* Navigation Bar */}
             <nav className="fixed w-full z-50 top-6 px-4">
                 <div className="max-w-4xl mx-auto flex justify-between items-center text-sm font-medium">
-                    <a href="/" className="text-xl font-display tracking-tight uppercase hover:opacity-80 transition no-underline text-coffee">
+                    <a href={`${WEBSITE_URL}/`} className="text-xl font-display tracking-tight uppercase hover:opacity-80 transition no-underline text-coffee">
                         TAKOOM
                     </a>
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex bg-coffee/5 backdrop-blur-sm rounded-full p-1 border border-coffee/10 shadow-sm">
-                        <a href="/about.html" className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">À Propos</a>
-                        <a href="/features.html" className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">Fonctionnalités</a>
-                        <a href="/sectors.html" className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">Secteurs</a>
-                        <a href="/pricing.html" className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">Offres</a>
+                        <a href={`${WEBSITE_URL}/about.html`} className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">À Propos</a>
+                        <a href={`${WEBSITE_URL}/features.html`} className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">Fonctionnalités</a>
+                        <a href={`${WEBSITE_URL}/sectors.html`} className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">Secteurs</a>
+                        <a href={`${WEBSITE_URL}/pricing.html`} className="px-6 py-2 rounded-full hover:bg-coffee/10 transition text-coffee no-underline">Offres</a>
                     </div>
 
                     <div className="flex items-center gap-4">
                         <a href="/login" className="hidden md:block font-bold text-coffee no-underline opacity-60 pointer-events-none">Connexion</a>
-                        <a href="/onboarding.html"
+                        <a href={`${WEBSITE_URL}/onboarding.html`}
                             className="bg-coffee text-cream px-6 py-3 rounded-full font-bold hover:scale-105 transition hidden md:block no-underline shadow-lg shadow-coffee/20">
                             Me lancer
                         </a>
@@ -186,14 +187,14 @@ const Login = () => {
                 </button>
 
                 <nav className="flex flex-col items-center gap-8">
-                    <a href="/" className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">Accueil</a>
-                    <a href="/about.html" className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">À Propos</a>
-                    <a href="/features.html" className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">Fonctionnalités</a>
-                    <a href="/sectors.html" className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">Secteurs</a>
-                    <a href="/pricing.html" className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">Offres</a>
+                    <a href={`${WEBSITE_URL}/`} className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">Accueil</a>
+                    <a href={`${WEBSITE_URL}/about.html`} className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">À Propos</a>
+                    <a href={`${WEBSITE_URL}/features.html`} className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">Fonctionnalités</a>
+                    <a href={`${WEBSITE_URL}/sectors.html`} className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">Secteurs</a>
+                    <a href={`${WEBSITE_URL}/pricing.html`} className="text-cream font-display text-2xl uppercase tracking-tighter hover:text-white transition no-underline">Offres</a>
                     <span className="text-cream font-display text-2xl uppercase tracking-tighter opacity-50">Connexion</span>
 
-                    <a href="/onboarding.html"
+                    <a href={`${WEBSITE_URL}/onboarding.html`}
                         className="mt-4 bg-cream text-coffee px-8 py-3 rounded-full font-bold text-lg uppercase tracking-widest hover:scale-105 transition shadow-xl no-underline">
                         Me lancer
                     </a>
